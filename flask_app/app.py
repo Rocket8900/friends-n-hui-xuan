@@ -18,7 +18,6 @@ def default_route():
 app.register_blueprint(ticketing_bp)
 
 app.register_blueprint(blankety_bp)
-
 app.register_blueprint(bureau_bp)
 app.register_blueprint(princess_bp)
 
@@ -35,4 +34,4 @@ if __name__ == "__main__":
     sock.bind(("localhost", 8080))
     port = sock.getsockname()[1]
     sock.close()
-    app.run(port=port)
+    app.run(port=port, debug=True)
