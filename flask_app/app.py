@@ -1,8 +1,9 @@
 import logging
 import socket
-from flask_app.routes.ticketing_agent import ticketing_bp
+from routes.ticketing_agent import ticketing_bp
+from routes.blankety_blanks import blankety_bp
 
-from flask_app.routes import app
+from routes import app
 
 logger = logging.getLogger(__name__)
 
@@ -10,6 +11,8 @@ logger = logging.getLogger(__name__)
 def default_route():
     return 'Python Template'
 app.register_blueprint(ticketing_bp)
+
+app.register_blueprint(blankety_bp)
 
 
 logger = logging.getLogger()
