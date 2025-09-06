@@ -39,7 +39,6 @@ def investigate():
                 "networkId": net_id,
                 "extraChannels": extra
             })
-
         return jsonify(result)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
