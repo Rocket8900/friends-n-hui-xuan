@@ -1,27 +1,27 @@
 from flask import Blueprint, request, jsonify
+import networkx as nx
 
 bureau_bp = Blueprint("bureau_bp", __name__)
 
 def find_extra_channels(edges):
-    parent = {}
+    G = nx.Graph()
+    for e in edges:
+        G.add_edge(e["spy1"], e["spy2"])
 
-    def find(u):
-        while parent.get(u, u) != u:
-            u = parent.get(u, u)
-        return u
+    # Find all simple cycles (lists of nodes)
+    cycles = nx.cycle_basis(G)
 
-    extra = []
-    for edge in edges:
-        u = edge["spy1"]
-        v = edge["spy2"]
-        pu = find(u)
-        pv = find(v)
-        if pu == pv:
-            # adding this edge creates a cycle
-            extra.append(edge)
-        else:
-            parent[pu] = pv
-    return extra
+    # Collect all edges from all cycles
+    edge_set = set()
+    for cycle in cycles:
+        L = len(cycle)
+        for i in range(L):
+            u, v = cycle[i], cycle[(i + 1) % L]
+            edge_set.add(tuple(sorted([u, v])))
+
+    # Return original edges that are part of any cycle
+    extra_edges = [e for e in edges if tuple(sorted([e["spy1"], e["spy2"]])) in edge_set]
+    return extra_edges
 
 @bureau_bp.post("/investigate")
 def investigate():
@@ -39,6 +39,7 @@ def investigate():
                 "networkId": net_id,
                 "extraChannels": extra
             })
+
         return jsonify(result)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
