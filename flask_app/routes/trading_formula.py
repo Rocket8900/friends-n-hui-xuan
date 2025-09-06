@@ -277,7 +277,7 @@ def trading_formula():
                 normalized_vars[k_norm] = v
             expr = _latex_to_python(formula)
             value = _safe_eval(expr, normalized_vars)
-            results.append({"result": round(value + 0.0000000001, 4)})  
+            results.append({"result": f"{value:.4f}"})
 
         return jsonify(results), 200
     except Exception as e:
