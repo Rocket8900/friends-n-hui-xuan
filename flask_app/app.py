@@ -2,7 +2,7 @@ import logging
 import socket
 from flask_app.routes.ticketing_agent import ticketing_bp
 
-from routes import app
+from flask_app.routes import app
 
 logger = logging.getLogger(__name__)
 
