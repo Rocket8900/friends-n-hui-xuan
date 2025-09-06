@@ -1,14 +1,15 @@
 import logging
 import socket
+from routes.ticketing_agent import ticketing_bp
 
 from routes import app
 
 logger = logging.getLogger(__name__)
 
-
 @app.route('/', methods=['GET'])
 def default_route():
     return 'Python Template'
+app.register_blueprint(ticketing_bp)
 
 
 logger = logging.getLogger()
