@@ -2,7 +2,7 @@ import logging
 import socket
 from routes import app
 from routes.ticketing_agent import ticketing_bp
-from routes.trivia import trivia
+from routes.princess_diaries import princess_bp
 from routes.blankety_blanks import blankety_bp
 from routes.universal_bureau import bureau_bp
 
@@ -20,7 +20,7 @@ app.register_blueprint(ticketing_bp)
 app.register_blueprint(blankety_bp)
 
 app.register_blueprint(bureau_bp)
-
+app.register_blueprint(princess_bp)
 
 logger = logging.getLogger()
 handler = logging.StreamHandler()
