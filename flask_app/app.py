@@ -7,7 +7,7 @@ from routes.blankety_blanks import blankety_bp
 from routes.universal_bureau import bureau_bp
 from routes.fog_of_wall import fog_bp
 from routes.trading_formula import trading_formula_bp
-
+from routes.duolingo_sort import duolingo_sort_bp
 
 logger = logging.getLogger(__name__)
 
@@ -18,6 +18,7 @@ def default_route():
 
 
 app.register_blueprint(ticketing_bp)
+app.register_blueprint(duolingo_sort_bp)
 
 app.register_blueprint(blankety_bp)
 app.register_blueprint(bureau_bp)
