@@ -3,6 +3,7 @@ import socket
 from routes.ticketing_agent import ticketing_bp
 
 from routes import app
+import routes.trivia
 
 logger = logging.getLogger(__name__)
 
