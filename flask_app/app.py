@@ -1,6 +1,6 @@
 import logging
 import socket
-from routes.ticketing_agent import ticketing_bp
+from flask_app.routes.ticketing_agent import ticketing_bp
 
 from routes import app
 
