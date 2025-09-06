@@ -3,6 +3,7 @@ import socket
 from flask_app.routes.ticketing_agent import ticketing_bp
 
 from flask_app.routes import app
+import flask_app.routes.trivia
 
 logger = logging.getLogger(__name__)
 
