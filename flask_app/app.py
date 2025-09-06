@@ -1,9 +1,8 @@
 import logging
 import socket
-from flask_app.routes.ticketing_agent import ticketing_bp
+from routes import app
+from routes.ticketing_agent import ticketing_bp
 
-from flask_app.routes import app
-import flask_app.routes.trivia
 
 logger = logging.getLogger(__name__)
 
